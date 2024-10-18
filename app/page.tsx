@@ -15,10 +15,6 @@ export default function Home() {
     setExpandedFAQ(expandedFAQ === id ? null : id);
   };
 
-  const scrollToFAQ = () => {
-    faqRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <div className="bg-gray-900 min-h-screen font-sans text-gray-300">
       <div className="absolute inset-0">
