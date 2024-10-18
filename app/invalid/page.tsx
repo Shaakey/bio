@@ -17,7 +17,7 @@ export default function invalid() {
               not existing!
             </h1>
             <p className="mt-4 text-lg text-gray-300">
-              sorry, this site doesn't exist yet!
+              sorry, this site doesnt exist yet!
             </p>
             <div className="mt-8 flex space-x-6">
               <a

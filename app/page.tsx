@@ -109,22 +109,22 @@ export default function Home() {
 
 
       {/* FAQ Section */}
-      <div ref={faqRef} className='bg-gradient-to-b from-pink-300 to-pink-600 text-center py-16'>
-        <h2 className='text-4xl font-bold text-white mb-8 animate-fadeIn animate-pulse'>about me :3</h2>
-        <div className='max-w-4xl mx-auto px-4'>
-          <ul className='text-gray-400 text-lg space-y-4'>
+      <div ref={faqRef} className="bg-gradient-to-b from-pink-300 to-pink-600 text-center py-16">
+        <h2 className="text-4xl font-bold text-white mb-8 animate-fadeIn animate-pulse">about me :3</h2>
+        <div className="max-w-4xl mx-auto px-4">
+          <ul className="text-gray-400 text-lg space-y-4">
             {faqs.map((faq) => (
               <li
                 key={faq.id}
-                className='cursor-pointer transition-transform transform hover:scale-105'
+                className="cursor-pointer transition-transform transform hover:scale-105"
                 onClick={() => toggleFAQ(faq.id)}
               >
                 <div className={`bg-gradient-to-r from-pink-300 to-pink-600 p-6 rounded-lg shadow-lg transition-all duration-300 ${expandedFAQ === faq.id ? "bg-gray-600" : ""}`}>
-                  <p className={`text-white font-semibold ${expandedFAQ === faq.id ? 'text-blue-400' : ""}`}>
+                  <p className={`text-white font-semibold ${expandedFAQ === faq.id ? "text-blue-400" : ""}`}>
                     {faq.question}
                   </p>
                   {expandedFAQ === faq.id && (
-                    <p className='text-gray-300 mt-2'>{faq.answer}</p>
+                    <p className="text-gray-300 mt-2">{faq.answer}</p>
                   )}
                 </div>
               </li>
