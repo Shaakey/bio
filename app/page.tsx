@@ -1,101 +1,139 @@
-import Image from "next/image";
+"use client"; 
+import React, { useState, useRef } from "react";
+import Image from "next/image"; 
+import Link from "next/link";
+import { redirect } from "next/dist/server/api-utils";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+  const faqRef = useRef<HTMLDivElement | null>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+  const faqs = [
+    { id: 1, question: "who am i?", answer: "hi, im arch! a software engineer from germany :3" },
+    { id: 2, question: "how do i get in contact with you?", answer: "uhh just add me on discord: archthedude" },
+  ];
+
+  const toggleFAQ = (id: number) => {
+    setExpandedFAQ(expandedFAQ === id ? null : id);
+  };
+
+  const scrollToFAQ = () => {
+    faqRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return (
+    <div className="bg-gray-900 min-h-screen font-sans text-gray-300">
+      <div className="absolute inset-0">
+        <svg className="w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="none">
+          <g fill="none" stroke="currentColor" strokeWidth="1">
+            <path d="M0 0H800V600H0z"/>
+            <path d="M0 0C111 148 222 296 333 444S444 592 555 740c111 148 222 296 333 444V0H0z" />
+          </g>
+        </svg>
+      </div>
+      
+      {/* Main Section */}
+      <div className="relative flex items-center justify-center h-screen bg-gradient-to-b from-pink-300 to-pink-600">
+        <div className="flex items-center justify-between max-w-6xl mx-8 space-x-8">
+          <div className="text-left">
+            <h1 className="text-5xl font-extrabold text-white transition-transform duration-500 transform hover:scale-110 animate-pulse">
+              hi, im arch!
+            </h1>
+            <p className="mt-4 text-lg text-gray-300">
+              hello, my name is arch and i code!
+            </p>
+            <div className="mt-8 flex space-x-6">
+              <a
+                className="bg-gradient-to-r from-pink-500 font-inter font-bold to-pink-600 text-white py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform transition-transform duration-500 hover:scale-105"
+                href="/invalid"
+              >
+                Projects
+              </a>
+              <a
+                className="bg-gradient-to-r from-pink-500 font-inter font-bold to-pink-600 text-white py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform transition-transform duration-500 hover:scale-105"
+                href="/invalid"
+              >
+                Contact
+              </a>
+            </div>
+            <p className="mt-4 text-lg text-gray-300">
+                Languages: NodeJS, JavaScript, Python, C# 
+                      {/* 🔴🟠🟢 */}
+            </p>
+            <div className="mt-5 flex space-x-6">
+            <img src="https://cdn.discordapp.com/attachments/1295488636485369960/1296467025702420550/js.png?ex=67126482&is=67111302&hm=959e0f047f36a6cdee9ea8dcc706937dfae5b38a6405c02d5ec53866d9c0df40&" alt=""
+            className="size-10 rounded-sm" />
+            <br />
+            <img src="https://cdn.discordapp.com/attachments/1295488636485369960/1296469487947612312/Python-programming-logo-on-transparent-background-PNG__1_-removebg-preview.png?ex=671266cd&is=6711154d&hm=e9828178720d4c36e031365f14993e5e4c8a20a51d1ad34feb86e84765bc15d8&" alt="" 
+            className="size-10 rounded-1xl rounded-sm"/>
+            <br />
+            <img src="https://cdn.discordapp.com/attachments/1295488636485369960/1296467862558343168/c-sharp-c-icon-1822x2048-wuf3ijab.png?ex=67126549&is=671113c9&hm=169bcf540285fce6cbd69ec4b386947e7b135ac6625a3a16f13cfe3ed81a5005&" alt=""  className="size-10 rounded-sm"/>
+            </div>
+          </div>
+          <div className="relative w-1/2">
             <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              src="https://cdn.discordapp.com/avatars/1059799966551384104/ee1aa2ea43dc500f4d8ba720db6bcb7c.png?size=1024"
+              alt="Vortex Product"
+              width={800}
+              height={800}
+              className="relative shadow-lg rounded-full"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+
+      <div className="bg-gradient-to-b from-pink-600 to-pink-300 text-center py-20">
+      <h2 className="text-4xl font-bold text-white mb-12 animate-pulse">my socials :3</h2>
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-2xl mb-12 transition-transform duration-500 hover:scale-105">
+          <p className="text-white text-lg font-sans py-2 px-4 font-semibold max-w-xs bg-gradient-to-r from-pink-600 to-pink-400 bg-opacity-90 rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105">
+            my discord: <b>archthedude</b>
+          </p>
+          <br />
+          <p className="text-white text-lg py-2 px-4 font-sans font-semibold max-w-xs bg-gradient-to-r from-pink-600 to-pink-400 bg-opacity-90 rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105">
+            my youtube: <b>dont have one</b>
+          </p>
+          <br />
+          <p className="text-white text-lg py-2 px-4 font-sans font-semibold max-w-xs bg-gradient-to-r from-pink-600 to-pink-400 bg-opacity-90 rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105">
+            my tiktok: <b>archiee</b>
+          </p>
+          <br />
+          <p className="text-white text-lg py-2 px-4 font-sans font-semibold max-w-xs bg-gradient-to-r from-pink-600 to-pink-400 bg-opacity-90 rounded-lg shadow-md cursor-pointer transition-transform duration-200 hover:scale-105">
+            my discord server: <b>dont have one</b>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+      {/* FAQ Section */}
+      <div ref={faqRef} className='bg-gradient-to-b from-pink-300 to-pink-600 text-center py-16'>
+        <h2 className='text-4xl font-bold text-white mb-8 animate-fadeIn animate-pulse'>about me :3</h2>
+        <div className='max-w-4xl mx-auto px-4'>
+          <ul className='text-gray-400 text-lg space-y-4'>
+            {faqs.map((faq) => (
+              <li
+                key={faq.id}
+                className='cursor-pointer transition-transform transform hover:scale-105'
+                onClick={() => toggleFAQ(faq.id)}
+              >
+                <div className={`bg-gradient-to-r from-pink-300 to-pink-600 p-6 rounded-lg shadow-lg transition-all duration-300 ${expandedFAQ === faq.id ? "bg-gray-600" : ""}`}>
+                  <p className={`text-white font-semibold ${expandedFAQ === faq.id ? 'text-blue-400' : ""}`}>
+                    {faq.question}
+                  </p>
+                  {expandedFAQ === faq.id && (
+                    <p className='text-gray-300 mt-2'>{faq.answer}</p>
+                  )}
+                </div>
+              </li>
+            ))}
+          </ul>
+          </div>
+          <br />
+          <br />
+      </div>
     </div>
   );
 }
