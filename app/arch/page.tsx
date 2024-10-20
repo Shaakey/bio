@@ -1,6 +1,5 @@
 "use client"; 
 import React, { useState, useRef } from "react";
-import Image from "next/image"; 
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
@@ -66,13 +65,8 @@ export default function Home() {
             </div>
           </div>
           <div className="relative w-1/2">
-            <Image
-              src="https://cdn.discordapp.com/avatars/1059799966551384104/ee1aa2ea43dc500f4d8ba720db6bcb7c.png?size=1024"
-              alt="Vortex Product"
-              width={800}
-              height={800}
-              className="relative shadow-lg rounded-full hover:scale-110 transition-transform duration-155"
-            />
+            <img src="https://cdn.discordapp.com/avatars/1059799966551384104/ee1aa2ea43dc500f4d8ba720db6bcb7c.png?size=1024" alt="" 
+            className="relative shadow-lg rounded-full hover:scale-110 transition-transform duration-155 height-800 width-800"/>
           </div>
         </div>
       </div>
