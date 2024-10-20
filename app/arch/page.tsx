@@ -28,26 +28,54 @@ export default function Home() {
       </div>
       
       {/* Main Section */}
-     <div className="relative flex items-center justify-center h-screen bg-gradient-to-b from-pink-300 to-pink-600">
-    <div className="flex flex-col items-center justify-center max-w-full text-center space-y-8 px-8">
-      <h1 className="text-5xl font-extrabold text-white transition-transform duration-500 transform hover:scale-110 animate-pulse">
-        Create Your Custom Bio For Free!
-      </h1>
-      <p className="mt-4 text-lg text-gray-300 hover:scale-110 transition-transform duration-155">
-        Get a fully customizable and personalized bio page—your online identity!
-      </p>
-      <div className="mt-8 flex space-x-6">
-        <a
-          className="bg-gradient-to-r from-pink-500 font-inter font-bold to-pink-600 text-white py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform transition-transform duration-500 hover:scale-105"
-          href="/create-bio"
-        >
-          Create Your Bio!
-        </a>
+      <div className="relative flex items-center justify-center h-screen bg-gradient-to-b from-pink-300 to-pink-600">
+        <div className="flex items-center justify-between max-w-6xl mx-8 space-x-8">
+          <div className="text-left">
+            <h1 className="text-5xl font-extrabold text-white transition-transform duration-500 transform hover:scale-110 animate-pulse">
+              hi, im arch!
+            </h1>
+            <p className="mt-4 text-lg text-gray-300 hover:scale-110 transition-transform duration-155">
+              hello, my name is arch and i code!
+            </p>
+            <div className="mt-8 flex space-x-6">
+              <a
+                className="bg-gradient-to-r from-pink-500 font-inter font-bold to-pink-600 text-white py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform transition-transform duration-500 hover:scale-105"
+                href="/invalid"
+              >
+                Projects
+              </a>
+              <a
+                className="bg-gradient-to-r from-pink-500 font-inter font-bold to-pink-600 text-white py-3 px-8 rounded-2xl shadow-lg hover:shadow-xl transform transition-transform duration-500 hover:scale-105"
+                href="/invalid"
+              >
+                Contact
+              </a>
+            </div>
+            <p className="mt-4 text-lg text-gray-300 hover:scale-110 transition-transform duration-5">
+                Languages: NodeJS, JavaScript, Python, C# 
+                      {/* 🔴🟠🟢 */}
+            </p>
+            <div className="mt-5 flex space-x-6">
+            <img src="https://cdn.discordapp.com/attachments/1295488636485369960/1296467025702420550/js.png?ex=67126482&is=67111302&hm=959e0f047f36a6cdee9ea8dcc706937dfae5b38a6405c02d5ec53866d9c0df40&" alt=""
+            className="size-10 rounded-sm hover:scale-110 transition-transform duration-50" />
+            <br />
+            <img src="https://cdn.discordapp.com/attachments/1295488636485369960/1296469487947612312/Python-programming-logo-on-transparent-background-PNG__1_-removebg-preview.png?ex=671266cd&is=6711154d&hm=e9828178720d4c36e031365f14993e5e4c8a20a51d1ad34feb86e84765bc15d8&" alt="" 
+            className="size-10 rounded-1xl rounded-sm hover:scale-110 transition-transform duration-50"/>
+            <br />
+            <img src="https://cdn.discordapp.com/attachments/1295488636485369960/1296467862558343168/c-sharp-c-icon-1822x2048-wuf3ijab.png?ex=67126549&is=671113c9&hm=169bcf540285fce6cbd69ec4b386947e7b135ac6625a3a16f13cfe3ed81a5005&" alt=""  className="size-10 rounded-sm hover:scale-110 transition-transform duration-50"/>
+            </div>
+          </div>
+          <div className="relative w-1/2">
+            <Image
+              src="https://cdn.discordapp.com/avatars/1059799966551384104/ee1aa2ea43dc500f4d8ba720db6bcb7c.png?size=1024"
+              alt="Vortex Product"
+              width={800}
+              height={800}
+              className="relative shadow-lg rounded-full hover:scale-110 transition-transform duration-155"
+            />
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-
-
 
 
       <div className="bg-gradient-to-b from-pink-600 to-pink-300 text-center py-20">
