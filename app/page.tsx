@@ -1,6 +1,5 @@
 "use client"; 
 import React, { useState, useRef } from "react";
-import Image from "next/image"; 
 
 export default function Home() {
   const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
